@@ -6,13 +6,12 @@
 | ------------------ | ------- | ------------------------- |
 | nickname           | string  | null: false               |
 | email              | string  | null: false, unique: true |
-| password           | string  | null: false               |
 | encrypted_password | string  | null: false               |
 | first_name         | string  | null: false               |
 | first_name_kana    | string  | null: false               |
 | last_name          | string  | null: false               |
 | last_name_kana     | string  | null: false               |
-| birthday           | integer | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
 
@@ -25,14 +24,14 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | name          | string     | null: false                    |
-| information   | string     | null: false                    |
+| information   | text       | null: false                    |
 | category_id   | integer    | null: false                    |
 | condition_id  | integer    | null: false                    |
 | cost_id       | integer    | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | send_day_id   | integer    | null: false                    |
 | price         | integer    | null: false                    |
-| user_id       | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -44,8 +43,8 @@
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| user_id   | references | null: false, foreign_key: true |
-| item_id   | references | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -63,10 +62,9 @@
 | town          | string     | null: false                    |
 | street        | string     | null: false                    |
 | building      | string     |                                |
-| phone         | integer    | null: false                    |
-| deal_id       | references | null: false, foreign_key: true |
+| phone         | string     | null: false                    |
+| deal          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :room
-- belongs_to :user
+- belongs_to :deal
