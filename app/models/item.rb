@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :condition
   belongs_to :cost
   belongs_to :prefecture
-  belongs_to :send_day
+  belongs_to :sendday
 
   belongs_to :user
   has_one_attached :image
@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :cost_id
     validates :prefecture_id
-    validates :send_day_id
+    validates :sendday_id
   end
 
 

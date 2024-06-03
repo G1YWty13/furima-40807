@@ -29,7 +29,7 @@
 | condition_id  | integer    | null: false                    |
 | cost_id       | integer    | null: false                    |
 | prefecture_id | integer    | null: false                    |
-| send_day_id   | integer    | null: false                    |
+| sendday_id    | integer    | null: false                    |
 | price         | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 
