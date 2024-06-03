@@ -28,4 +28,4 @@ class Item < ApplicationRecord
       less_than_or_equal_to: 9999999
     }
   end
-
+end
