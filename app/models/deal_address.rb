@@ -15,6 +15,6 @@ class DealAddress
 
   def save
     deal = Deal.create(user_id: user_id, item_id: item_id)
-    Address.create(housenumber: housenumber, prefecture: prefecture, town: town, street: street, building: building, phone: phone, deal_id: deal.id)
+    Address.create(housenumber: housenumber, prefecture_id: prefecture_id, town: town, street: street, building: building, phone: phone, deal_id: deal.id)
   end
 end
