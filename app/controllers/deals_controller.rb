@@ -2,6 +2,7 @@ class DealsController < ApplicationController
 
   def index
     @deal_address = DealAddress.new
+    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -18,5 +19,5 @@ class DealsController < ApplicationController
   def deal_params
     params.require(:deal_address).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :price).merge(user_id: current_user.id)
   end
-  
+
 end
