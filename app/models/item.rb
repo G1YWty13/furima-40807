@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :sendday
 
   belongs_to :user
-  # has_one :deal
+  has_one :deal
   has_one_attached :image
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
