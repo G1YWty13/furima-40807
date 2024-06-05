@@ -1,4 +1,4 @@
-class DonationAddress
+class DealAddress
   include ActiveModel::Model
   attr_accessor :housenumber, :prefecture, :town, :street, :building, :phone, :user_id, :item_id
 
