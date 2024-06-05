@@ -1,8 +1,8 @@
 class DealsController < ApplicationController
+  before_action :set_item, only: [:index, :create]
 
   def index
     @deal_address = DealAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -11,14 +11,17 @@ class DealsController < ApplicationController
       @deal_address.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index, status: :unprocessable_entity
     end
   end
 
   private
   def deal_params
-    params.require(:deal_address).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :price).merge(user_id: current_user.id)
+    params.require(:deal_address).permit(:housenumber, :prefecture, :town, :street, :building, :phone).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
 end
