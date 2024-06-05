@@ -17,7 +17,7 @@ class DealsController < ApplicationController
 
   private
   def deal_params
-    params.require(:deal_address).permit(:housenumber, :prefecture_id, :town, :street, :building, :phone).merge(user_id: current_user.id)
+    params.require(:deal_address).permit(:housenumber, :prefecture_id, :town, :street, :building, :phone).merge(user_id: current_user.id, item_id: @item.id)
   end
 
   def set_item
