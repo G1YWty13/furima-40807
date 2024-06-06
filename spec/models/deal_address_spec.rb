@@ -88,6 +88,12 @@ RSpec.describe DealAddress, type: :model do
         @deal_address.valid?
         expect(@deal_address.errors.full_messages).to include("Phone is invalid")
       end
+
+      it 'tokenが空では登録できない' do
+        @deal_address.token = nil
+        @deal_address.valid?
+        expect(@deal_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
