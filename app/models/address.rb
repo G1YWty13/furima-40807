@@ -11,5 +11,4 @@ class Address < ApplicationRecord
     validates :street
     validates :phone
   end
-
 end

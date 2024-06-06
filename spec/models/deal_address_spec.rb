@@ -26,19 +26,19 @@ RSpec.describe DealAddress, type: :model do
       it 'housenumberは-を含まないと登録できない' do
         @deal_address.housenumber = '1234567'
         @deal_address.valid?
-        expect(@deal_address.errors.full_messages).to include("Housenumber is invalid. Include hyphen(-)")
+        expect(@deal_address.errors.full_messages).to include('Housenumber is invalid. Include hyphen(-)')
       end
 
       it 'housenumberは3桁-4桁でないと登録できない' do
         @deal_address.housenumber = '1234-567'
         @deal_address.valid?
-        expect(@deal_address.errors.full_messages).to include("Housenumber is invalid. Include hyphen(-)")
+        expect(@deal_address.errors.full_messages).to include('Housenumber is invalid. Include hyphen(-)')
       end
 
       it 'housenumberは半角でないと登録できない' do
         @deal_address.housenumber = '１２３-４５６７'
         @deal_address.valid?
-        expect(@deal_address.errors.full_messages).to include("Housenumber is invalid. Include hyphen(-)")
+        expect(@deal_address.errors.full_messages).to include('Housenumber is invalid. Include hyphen(-)')
       end
 
       it 'prefecture_idが空では登録できない' do
@@ -54,39 +54,39 @@ RSpec.describe DealAddress, type: :model do
       end
 
       it 'townが空では登録できない' do
-        @deal_address.town = ""
+        @deal_address.town = ''
         @deal_address.valid?
         expect(@deal_address.errors.full_messages).to include("Town can't be blank")
       end
 
       it 'streetが空では登録できない' do
-        @deal_address.street = ""
+        @deal_address.street = ''
         @deal_address.valid?
         expect(@deal_address.errors.full_messages).to include("Street can't be blank")
       end
 
       it 'phoneが空では登録できない' do
-        @deal_address.phone = ""
+        @deal_address.phone = ''
         @deal_address.valid?
         expect(@deal_address.errors.full_messages).to include("Phone can't be blank")
       end
 
       it 'phoneが9桁以下では登録できない' do
-        @deal_address.phone = 123456789
+        @deal_address.phone = 123_456_789
         @deal_address.valid?
-        expect(@deal_address.errors.full_messages).to include("Phone is invalid")
+        expect(@deal_address.errors.full_messages).to include('Phone is invalid')
       end
 
       it 'phoneが12桁以上では登録できない' do
-        @deal_address.phone = 123456789012
+        @deal_address.phone = 123_456_789_012
         @deal_address.valid?
-        expect(@deal_address.errors.full_messages).to include("Phone is invalid")
+        expect(@deal_address.errors.full_messages).to include('Phone is invalid')
       end
 
       it 'phoneが全角では登録できない' do
-        @deal_address.phone = "１２３４５６７８９０"
+        @deal_address.phone = '１２３４５６７８９０'
         @deal_address.valid?
-        expect(@deal_address.errors.full_messages).to include("Phone is invalid")
+        expect(@deal_address.errors.full_messages).to include('Phone is invalid')
       end
 
       it 'tokenが空では登録できない' do
