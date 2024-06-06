@@ -57,7 +57,7 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| house_number  | string     | null: false                    |
+| housenumber   | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | town          | string     | null: false                    |
 | street        | string     | null: false                    |

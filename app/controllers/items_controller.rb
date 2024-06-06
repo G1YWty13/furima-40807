@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
-    # @deals = Deal.all
+    @deals = Deal.all
   end
 
   def new
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if current_user.id == @item.user.id
+    return unless current_user.id != @item.user.id || @item.deal.present?
 
     redirect_to action: :index
   end
@@ -38,13 +38,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    unless current_user.id == @item.user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless current_user.id == @item.user.id
     @item.destroy
     redirect_to root_path
   end
-    
 
   private
 
