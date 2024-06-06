@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
-    # @deals = Deal.all
+    @deals = Deal.all
   end
 
   def new
@@ -24,9 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if current_user.id == @item.user.id
-
-    redirect_to action: :index
+    if current_user.id != @item.user.id || @item.deal.present?
+      redirect_to action: :index
+    end
   end
 
   def update
