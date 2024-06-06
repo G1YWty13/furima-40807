@@ -2,13 +2,17 @@ require 'rails_helper'
 
 RSpec.describe DealAddress, type: :model do
   before do
-    @deal_address = FactoryBot.build(:deal_address)
+    @item = FactoryBot.create(:item)
+    @user = FactoryBot.create(:user)
+    @deal_address = FactoryBot.build(:deal_address, user_id: @user.id, item_id: @item.id)
   end
 
   describe '商品購入' do
     context '購入できる場合' do
       it '必要な情報が全て存在すれば購入できる' do
         expect(@deal_address).to be_valid
+        puts @deal_address.user_id
+        puts @deal_address.item_id
       end
 
       it 'buildingはなくても購入できる' do
@@ -17,6 +21,19 @@ RSpec.describe DealAddress, type: :model do
       end
     end
     context '購入できない場合' do
+
+      it 'userが紐付いていないと保存できない' do
+        @deal_address.user_id = nil
+        @deal_address.valid?
+        expect(@deal_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'itemが紐付いていないと保存できない' do
+        @deal_address.item_id = nil
+        @deal_address.valid?
+        expect(@deal_address.errors.full_messages).to include("Item can't be blank")
+      end
+
       it 'housenumberが空では登録できない' do
         @deal_address.housenumber = ''
         @deal_address.valid?
@@ -94,6 +111,7 @@ RSpec.describe DealAddress, type: :model do
         @deal_address.valid?
         expect(@deal_address.errors.full_messages).to include("Token can't be blank")
       end
+
     end
   end
 end

@@ -6,8 +6,8 @@ FactoryBot.define do
     street { '1-1' }
     building { '東京ハイツ' }
     phone { 10_000_000_000 }
-    user_id { 1 }
-    item_id { 1 }
     token { 'tok_abcdefghijk00000000000000000' }
+    association :user
+    association :item
   end
 end
